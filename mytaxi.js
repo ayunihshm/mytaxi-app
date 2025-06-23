@@ -6,7 +6,7 @@ require('dotenv').config();
 const { authenticate, authorize } = require('./auth');
 
 const app = express();
-const port = 3500;
+const port = process.env.PORT || 3500;
 app.use(express.json());
 
 let db;

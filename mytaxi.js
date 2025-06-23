@@ -319,3 +319,8 @@ app.patch('/admin/approve/:id', authenticate, authorize(['admin']), async (req, 
 
 // Start server
 app.listen(port, () => console.log(`MyTaxi Server running on port ${port}`));
+
+// Azure App
+app.get('/', (req, res) => {
+  res.send('🎉 MyTaxi API is live and running on Azure!');
+});

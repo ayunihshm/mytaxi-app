@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "mytaxi.js",
-  "scripts": {
-    "start": "node mytaxi.js",
-    "test": "echo \"No tests defined\""
-  },
+"scripts": {
+  "start": "node mytaxi.js",
+  "test": "echo \"No tests defined\""
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ayunihshm/mytaxi-app.git"

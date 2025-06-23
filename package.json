@@ -1,0 +1,26 @@
+{
+  "name": "mytaxi-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mytaxi.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayunihshm/mytaxi-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayunihshm/mytaxi-app/issues"
+  },
+  "homepage": "https://github.com/ayunihshm/mytaxi-app#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.17.0"
+  }
+}

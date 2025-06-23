@@ -4,8 +4,7 @@
   "description": "",
   "main": "mytaxi.js",
 "scripts": {
-  "start": "node mytaxi.js",
-  "test": "echo \"No tests defined\""
+  "start": "node mytaxi.js"
 },
   "repository": {
     "type": "git",

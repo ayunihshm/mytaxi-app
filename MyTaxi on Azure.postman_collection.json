@@ -1,0 +1,625 @@
+{
+	"info": {
+		"_postman_id": "1018dec9-37de-401b-8388-0d867ee3bf55",
+		"name": "MyTaxi on Azure",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43187254"
+	},
+	"item": [
+		{
+			"name": "Register - Passenger",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"maya@gmail.com\",\r\n  \"password\": \"itsmemay4\",\r\n  \"name\": \"Maya\",\r\n  \"phone\": \"017-6287733\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/auth/register-passenger",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"auth",
+						"register-passenger"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register - Driver",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"zulhakim87@yahoo.com\",\r\n  \"password\": \"zulpass456\",\r\n  \"name\": \"Zul Hakim\",\r\n  \"phone\": \"017-3829140\",\r\n  \"carModel\": \"Perodua Bezza\",\r\n  \"licensePlate\": \"WNB 5642\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/auth/register-driver",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"auth",
+						"register-driver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register - Admin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"admin-razak@gmail.com\",\r\n  \"password\": \"razakadmin22\",\r\n  \"name\": \"Admin Razak\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/auth/register-admin",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"auth",
+						"register-admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login - Admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const res = pm.response.json();\r",
+							"pm.environment.set(\"admin_token\", res.token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"admin-razak@gmail.com\",\r\n  \"password\": \"razakadmin22\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/auth/login",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login - Passenger",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const res = pm.response.json();\r",
+							"pm.environment.set(\"passenger_token\", res.token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"maya@gmail.com\",\r\n  \"password\": \"itsmemay4\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/auth/login",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login - Driver",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const res = pm.response.json();\r",
+							"pm.environment.set(\"driver_token\", res.token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"zulhakim87@yahoo.com\",\r\n  \"password\": \"zulpass456\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/auth/login",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Approve Driver - Admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admin_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/admin/approve/685ce96dd5fed5881b161bb0",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"admin",
+						"approve",
+						"685ce96dd5fed5881b161bb0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Availability - Driver",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{driver_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"availabilityStatus\": \"available\" //on-ride or unavailable\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/drivers/685ce96dd5fed5881b161bb0/availability",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"drivers",
+						"685ce96dd5fed5881b161bb0",
+						"availability"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request Ride - Passenger",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{passenger_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODU3MDcwMzhhZTJjYzZiZGEzOGZkMWQiLCJpYXQiOjE3NTA1MzM5MjUsImV4cCI6MTc1MDUzNzUyNX0.o4KbS0Bn0ug8W1BfBtLVtB6Gv8Mbqqc1Qs1gXtftD8c",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"origin\": \"Temiang\", \r\n  \"destination\": \"Sikamat\", \r\n  \"fare\": 10.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/rides",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"rides"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Ride Status - Driver",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{driver_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODU3Yjc3NjI2NWRjZDFmNTAyOTBiZTEiLCJyb2xlIjoiZHJpdmVyIiwiaWF0IjoxNzUwNTc5MDcxLCJleHAiOjE3NTA1ODI2NzF9.dpcksOSYN6I6ZxDf7kuvhxmMO9JXDS_niPQLJEx9Kco",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"status\": \"completed\" //accepted, rejected or completed\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/rides/685d1f822b7f008da0dc9b42/status",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"rides",
+						"685d1f822b7f008da0dc9b42",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Requested Ride - Passenger",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{passenger_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODU3Yjc3NjI2NWRjZDFmNTAyOTBiZTEiLCJyb2xlIjoiZHJpdmVyIiwiaWF0IjoxNzUwNTc5MDcxLCJleHAiOjE3NTA1ODI2NzF9.dpcksOSYN6I6ZxDf7kuvhxmMO9JXDS_niPQLJEx9Kco",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"availabilityStatus\": \"available\" //on-ride or unavailable\r\n}"
+				},
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/rides/685d23282b7f008da0dc9b43/cancel",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"rides",
+						"685d23282b7f008da0dc9b43",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Ride Status - Passenger",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{passenger_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/rides/685d1f822b7f008da0dc9b42",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"rides",
+						"685d1f822b7f008da0dc9b42"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Ride History - User ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{passenger_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODU3Yjc3NjI2NWRjZDFmNTAyOTBiZTEiLCJyb2xlIjoiZHJpdmVyIiwiaWF0IjoxNzUwNTc5MDcxLCJleHAiOjE3NTA1ODI2NzF9.dpcksOSYN6I6ZxDf7kuvhxmMO9JXDS_niPQLJEx9Kco",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/history?status=completed",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"history"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "completed"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rate Ride - Passenger ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{passenger_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rating\": 5,\r\n  \"comment\": \"Driver drive carefully.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/rides/685d1f822b7f008da0dc9b42/rate",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"rides",
+						"685d1f822b7f008da0dc9b42",
+						"rate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View All Users - Admin ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{admin_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODU3Yjc3NjI2NWRjZDFmNTAyOTBiZTEiLCJyb2xlIjoiZHJpdmVyIiwiaWF0IjoxNzUwNTc5MDcxLCJleHAiOjE3NTA1ODI2NzF9.dpcksOSYN6I6ZxDf7kuvhxmMO9JXDS_niPQLJEx9Kco",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://mytaxi-app-hcbuaddmfre6h2eu.eastasia-01.azurewebsites.net/admin/users",
+					"protocol": "https",
+					"host": [
+						"mytaxi-app-hcbuaddmfre6h2eu",
+						"eastasia-01",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"admin",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

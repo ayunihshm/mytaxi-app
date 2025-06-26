@@ -77,11 +77,6 @@ app.post('/auth/login', async (req, res) => {
   res.json({ message: 'Login successful', token });
 });
 
-// ===== Logout Route =======
-app.post('/auth/logout', authenticate, async (req, res) => {
-  res.json({ message: 'Logged out' });
-});
-
 // ====== Ride Request ======
 app.post('/rides', authenticate, async (req, res) => {
   const { origin, destination, fare } = req.body;

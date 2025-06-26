@@ -273,10 +273,16 @@ app.post('/rides/:rideId/rate', authenticate, async (req, res) => {
 
 // ============ Get Assigned Rides (Driver) ===============
 app.get('/rides/assigned', authenticate, async (req, res) => {
-  if (req.user.role !== 'driver') return res.status(403).json({ error: 'Only drivers can view assigned rides' });
+  if (req.user.role !== 'driver') {
+    return res.status(403).json({ error: 'Only drivers can view assigned rides' });
+  }
 
   const driverId = req.user.userId;
-  if (!driverId || !ObjectId.isValid(driverId)) return res.status(400).json({ error: 'Invalid or missing driver ID' });
+
+  // Check for valid ObjectId
+  if (!driverId || !ObjectId.isValid(driverId)) {
+    return res.status(400).json({ error: 'Invalid or missing driver ID' });
+  }
 
   try {
     const rides = await db.collection('rides').find({

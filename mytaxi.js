@@ -302,11 +302,16 @@ app.get('/history', authenticate, async (req, res) => {
   const query = { [field]: new ObjectId(req.user.userId) };
 
   if (req.query.status) {
-    query.status = req.query.status;
+    query.status = req.query.status;  // e.g., 'completed'
   }
 
-  const rides = await db.collection('rides').find(query).toArray();
-  res.json({ rides });
+  try {
+    const rides = await db.collection('rides').find(query).toArray();
+    res.json({ rides });
+  } catch (err) {
+    console.error('Error fetching ride history:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // ====== Admin Routes ======

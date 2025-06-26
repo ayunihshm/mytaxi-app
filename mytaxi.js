@@ -271,32 +271,6 @@ app.post('/rides/:rideId/rate', authenticate, async (req, res) => {
   res.json({ message: 'Ride rated successfully' });
 });
 
-// ============ Get Assigned Rides (Driver) ===============
-app.get('/rides/assigned', authenticate, async (req, res) => {
-  if (req.user.role !== 'driver') {
-    return res.status(403).json({ error: 'Only drivers can view assigned rides' });
-  }
-
-  const driverId = req.user.userId;
-
-  // Check for valid ObjectId
-  if (!driverId || !ObjectId.isValid(driverId)) {
-    return res.status(400).json({ error: 'Invalid or missing driver ID' });
-  }
-
-  try {
-    const rides = await db.collection('rides').find({
-      driverId: new ObjectId(driverId),
-      status: { $in: ['assigned', 'started'] }
-    }).toArray();
-
-    res.json({ rides });
-  } catch (err) {
-    console.error('Error fetching assigned rides:', err);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
 // ====== Ride History ======
 app.get('/history', authenticate, async (req, res) => {
   const field = req.user.role === 'driver' ? 'driverId' : 'passengerId';

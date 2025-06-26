@@ -299,7 +299,13 @@ app.get('/rides/assigned', authenticate, async (req, res) => {
 // ====== Ride History ======
 app.get('/history', authenticate, async (req, res) => {
   const field = req.user.role === 'driver' ? 'driverId' : 'passengerId';
-  const rides = await db.collection('rides').find({ [field]: new ObjectId(req.user.userId) }).toArray();
+  const query = { [field]: new ObjectId(req.user.userId) };
+
+  if (req.query.status) {
+    query.status = req.query.status;
+  }
+
+  const rides = await db.collection('rides').find(query).toArray();
   res.json({ rides });
 });
 

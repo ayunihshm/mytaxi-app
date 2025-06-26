@@ -262,7 +262,14 @@ app.post('/rides/:rideId/rate', authenticate, async (req, res) => {
   const { rating, comment } = req.body;
   if (!rating || rating < 1 || rating > 5) return res.status(400).json({ error: 'Rating must be between 1 and 5' });
 
-  const ride = await db.collection('rides').findOne({ _id: new ObjectId(rideId) });
+  await db.collection('ratings').insertOne({
+    rideId: ride._id,
+    passengerId: new ObjectId(req.user.userId),
+    rating,
+    comment,
+    timestamp: new Date()
+  });
+
   if (!ride) return res.status(404).json({ error: 'Ride not found' });
   if (ride.passengerId.toString() !== req.user.userId) return res.status(403).json({ error: 'You can only rate your own ride' });
   if (ride.status !== 'completed') return res.status(400).json({ error: 'You can only rate completed rides' });
